@@ -62,9 +62,7 @@ Para la creación de nuestra base de datos ocuparemos **Mysql** (*mariadb-server
 
 Para ello necesitaremos abrir una terminal en la **Raspberry Pi**, en ella iniciar **Mysql** con nuestro usuario y ejecutar los siguientes comandos:
 
-```
-
-python
+```arduino
 
 def hello_world():
 
