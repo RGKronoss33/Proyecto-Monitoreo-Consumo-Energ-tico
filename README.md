@@ -15,13 +15,13 @@ Este proyecto utiliza una ESP32, una Raspberry Pi, entre otros componentes para 
 
 1. [Creacion de la base de datos](#Base_de_datos)
 
-1. [Circuito]()
+1. [Circuito](#Circuito)
 
-1. [Código]()
+1. [Código](#Codigo)
 
-1. [Configuración Node-Red]()
+1. [Configuración Node-Red](#Node)
 
-1. [Funcionamiento del proyecto]()
+1. [Funcionamiento del proyecto](#Funcionamiento)
 
 <a id="Materiales"></a>
 ## Materiales a utilizar                                    
@@ -77,3 +77,35 @@ Una vez destro de nuestra **DATABASE** crearemos nuestra tabla con el siguiente 
 ```mysql
 CREATE TABLE ConsumoEnergetico ( id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP, nombre CHAR(248) NOT NULL, irms FLOAT(4,2), pot FLOAT(5,2) );
 ```
+Ya creada podemos usar estos comandos para verificar que funciona:
+```mysql
+INSERT INTO ConsumoEnergetico (nombre, irms, pot) VALUES ('usuario', 1.37, 45.66);
+
+SELECT * FROM ConsumoEnergetico;
+```
+
+Y con esto tendremos nuestra base de datos ya creada.
+
+<a id="Circuito"></a>
+## Circuito
+
+Circuito
+
+<a id="Codigo"></a>
+## Codigo
+
+```arduino
+
+<Codigo>
+
+```
+
+<a id="Node"></a>
+## Configuración Node-Red
+
+Node-red
+
+<a id="Funcionamiento"></a>
+## Funcionamiento del proyecto
+
+Funcionamiento
