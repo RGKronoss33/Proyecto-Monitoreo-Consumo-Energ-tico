@@ -51,9 +51,23 @@ Este proyecto utiliza una ESP32, una Raspberry Pi, entre otros componentes para 
 
 * Tener previamente instalado la **IDE de Arduino**, **Node-red** y **Mysql** (*mariadb-server*) en tu Raspberry Pi.
 
+* Se necesita de un usuario con todos los privilegios en **Mysql**.
+
 * Tener conocimientos básicos de cómo programar en **C++** ya que este es el lenguaje utilizado por la **IDE de Arduino**.
 
 <a id="Base_de_datos"></a>
 ## Creacion de la base de datos
 
-Para la creación de nuestra base de datos ocuparemos **Mysql** (*mariadb-server*), con el almacenaremos las lecturas de corriente y potencia que lea nuestro **SCT013** en nuestra Raspberry Pi.
+Para la creación de nuestra base de datos ocuparemos **Mysql** (*mariadb-server*), con el, almacenaremos las lecturas de corriente y potencia que lea nuestro **SCT013** en nuestra Raspberry Pi.
+
+Para ello necesitaremos abrir una terminal en la **Raspberry Pi**, en ella iniciar **Mysql** con nuestro usuario y ejecutar los siguientes comandos:
+
+```
+
+python
+
+def hello_world():
+
+print("Hello, World!")
+
+```
