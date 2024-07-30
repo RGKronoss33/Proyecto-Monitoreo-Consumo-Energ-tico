@@ -1,26 +1,29 @@
+<a id="Presentación"></a>
 # Proyecto-Monitoreo-Consumo-Energ-tico
 Este proyecto utiliza una ESP32, una Raspberry Pi, entre otros componentes para su funcionamiento. Con el podrás medir la corriente y potencia de uno o más dispositivos conectados a un multi contacto.
 
+<a id="Índice"></a>
 ## Índice
 
-1. Inicio del proyecto
+1. [Inicio del proyecto](#Presentación)
 
-1. Índice
+1. [Índice](#Índice)
 
-1. Materiales a utilizar
+1. [Materiales a utilizar](#Materiales)
 
-1. Requisitos para empezar
+1. [Requisitos para empezar](#Requisitos)
 
-1. Creacion de la base de datos
+1. [Creacion de la base de datos](#Base_de_datos)
 
-1. Circuito
+1. [Circuito]()
 
-1. Código
+1. [Código]()
 
-1. Configuración Node-Red
+1. [Configuración Node-Red]()
 
-1. Funcionamiento del proyecto
+1. [Funcionamiento del proyecto]()
 
+<a id="Materiales"></a>
 ## Materiales a utilizar
 
 * Raspberry Pi 4
@@ -43,12 +46,14 @@ Este proyecto utiliza una ESP32, una Raspberry Pi, entre otros componentes para 
 
 * Cables Jumper macho-hembra
 
+<a id="Requisitos"></a>
 ## Requisitos para empezar
 
 * Tener previamente instalado la **IDE de Arduino**, **Node-red** y **Mysql** (*mariadb-server*) en tu Raspberry Pi.
 
 * Tener conocimientos básicos de cómo programar en **C++** ya que este es el lenguaje utilizado por la **IDE de Arduino**.
 
+<a id="Base_de_datos"></a>
 ## Creacion de la base de datos
 
 Para la creación de nuestra base de datos ocuparemos **Mysql** (*mariadb-server*), con el almacenaremos las lecturas de corriente y potencia que lea nuestro **SCT013** en nuestra Raspberry Pi.
