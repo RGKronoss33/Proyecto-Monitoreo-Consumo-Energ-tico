@@ -3,38 +3,38 @@ Este proyecto utiliza una ESP32, una Raspberry Pi, entre otros componentes para 
 
 ## Índice
 
-1.Inicio del proyecto
+1. Inicio del proyecto
 
-2.Índice
+2. Índice
 
-3.Materiales a utilizar
+3. Materiales a utilizar
 
-4.Requisitos para empezar
+4. Requisitos para empezar
 
-5.Circuito
+5. Circuito
 
-6.Código
+6. Código
 
-7.Configuración Node-Red
+7. Configuración Node-Red
 
-8.Funcionamiento del proyecto
+8. Funcionamiento del proyecto
 
 ## Materiales a utilizar
 
-*Raspberry Pi 4
+* Raspberry Pi 4
 
-*ESP32-WROOM-32
+* ESP32-WROOM-32
 
-*1 SCT013 30A/1V
+* 1 SCT013 30A/1V
 
-*1 Modulo Breakout TRRS Jack 3.5mm
+* 1 Modulo Breakout TRRS Jack 3.5mm
 
-*1 Capacitor de 100μF a 25 o 35V 
+* 1 Capacitor de 100μF a 25 o 35V 
 
-*2 Resistencias de 470kΩ
+* 2 Resistencias de 470kΩ
 
-*1 Resistencia de 330Ω
+* 1 Resistencia de 330Ω
 
-*1 LED (cualquier color)
+* 1 LED (cualquier color)
 
-*Cables Jumper macho-hembra
+* Cables Jumper macho-hembra
