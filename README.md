@@ -24,7 +24,7 @@ Este proyecto utiliza una ESP32, una Raspberry Pi, entre otros componentes para 
 1. [Funcionamiento del proyecto]()
 
 <a id="Materiales"></a>
-## Materiales a utilizar                                    [Inicio](#Presentación)
+## Materiales a utilizar                                    
 
 * Raspberry Pi 4
 
@@ -44,7 +44,7 @@ Este proyecto utiliza una ESP32, una Raspberry Pi, entre otros componentes para 
 
 * 1 LED (cualquier color)
 
-* Cables Jumper macho-hembra
+* Cables Jumper macho-hembra                                             [Inicio](#Presentación)
 
 <a id="Requisitos"></a>
 ## Requisitos para empezar
