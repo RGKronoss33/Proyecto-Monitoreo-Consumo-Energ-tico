@@ -62,10 +62,18 @@ Para la creación de nuestra base de datos ocuparemos **Mysql** (*mariadb-server
 
 Para ello necesitaremos abrir una terminal en la **Raspberry Pi**, en ella iniciar **Mysql** con nuestro usuario y ejecutar los siguientes comandos:
 
-```arduino
+```mysql
+CREATE DATABASE consumo;
+```
 
-def hello_world():
+Y despues lo ocuparemos para crear nuestra tabla usando este comando:
 
-print("Hello, World!")
+```mysql
+USE consumo;
+```
 
+Una vez destro de nuestra **DATABASE** crearemos nuestra tabla con el siguiente comando:
+
+```mysql
+CREATE TABLE ConsumoEnergetico ( id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP, nombre CHAR(248) NOT NULL, irms FLOAT(4,2), pot FLOAT(5,2) );
 ```
