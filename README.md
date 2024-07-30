@@ -24,7 +24,7 @@ Este proyecto utiliza una ESP32, una Raspberry Pi, entre otros componentes para 
 1. [Funcionamiento del proyecto]()
 
 <a id="Materiales"></a>
-## Materiales a utilizar
+## Materiales a utilizar        [Inicio](#Presentación)
 
 * Raspberry Pi 4
 
