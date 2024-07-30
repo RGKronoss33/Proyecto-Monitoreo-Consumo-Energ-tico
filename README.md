@@ -1,6 +1,6 @@
 # Proyecto-Monitoreo-Consumo-Energ-tico
-Este proyecto utiliza una ESP32, una Raspberry Pi, entre otros componentes para su funcionamiento. Con el podrás medir la corriente y potencia de uno o mas dispositivos conectados a un Multicontacto
-## Indice
+Este proyecto utiliza una ESP32, una Raspberry Pi, entre otros componentes para su funcionamiento. Con el podrás medir la corriente y potencia de uno o más dispositivos conectados a un multi contacto.
+## Índice
 1.Inicio del proyecto
 
 2.Materiales a utilizar
@@ -9,8 +9,8 @@ Este proyecto utiliza una ESP32, una Raspberry Pi, entre otros componentes para 
 
 4.Circuito
 
-5.Codigo
+5.Código
 
-6.Configuracion Node-Red
+6.Configuración Node-Red
 
-7.Funcionamiento del Proyecto
+7.Funcionamiento del proyecto
