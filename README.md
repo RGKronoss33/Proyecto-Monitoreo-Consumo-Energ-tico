@@ -44,7 +44,7 @@ Este proyecto utiliza una ESP32, una Raspberry Pi, entre otros componentes para 
 
 * 1 LED (cualquier color)
 
-* Cables Jumper macho-hembra                                             [Inicio](#Presentación)
+* Cables Jumper macho-hembra[                                             Inicio](#Presentación)
 
 <a id="Requisitos"></a>
 ## Requisitos para empezar
