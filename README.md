@@ -304,13 +304,13 @@ void loop() {
 <a id="Telegram"></a>
 ## Bot Telegram
 
-
+Para inciar debemos tener instalado previamente **Telegram**
 
 
 <a id="Node"></a>
 ## Configuración Node-Red
 
-Aqui viene la configuracion del Node-red en formato JSON para que dentro de tu Node-red presiones en el menu de Hamburgesa, import y pegues este codigo:
+Aqui viene la configuracion del **Node-red** en formato **JSON** para que dentro de tu **Node-red** presiones en el menu de Hamburgesa, import y pegues este codigo:
 
 ```javascrip
 
