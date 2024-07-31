@@ -304,7 +304,14 @@ void loop() {
 <a id="Telegram"></a>
 ## Bot Telegram
 
-Para inciar debemos tener instalado previamente **Telegram**
+Para inciar debemos tener instalado previamente **Telegram**.
+
+Abrimos **Telegram** y buscamos el la lupa **BotFather** y lo inciamos con el boton **Iniciar** o introduciendo lo siguiente : **/start**
+
+Una vez iniciado intriducimos **/newbot** para crear nuestro bot al que le mandaremos instrucciones para controlar los pines de la **ESP32**.
+
+Despues de mandar **/newbot** nos preguntara cual será el nombre de nuestro bot al cual le podremos poner cualquier nombre como el siguiente: **Bot Consumo Energetico**. Una vez mandado nos pedira otro nombre para el bot el cual usaremos en **Node-red** el cual puede ser el siguiente : **consumo_energetico_bot**.    
+- **NOTA: Es importante que lleve "_" si el nombre lo quieres poner espaciado y que al final termine con *bot***
 
 
 <a id="Node"></a>
