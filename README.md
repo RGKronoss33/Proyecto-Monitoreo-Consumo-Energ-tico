@@ -76,11 +76,11 @@ Una vez destro de nuestra **DATABASE** crearemos nuestra tabla con el siguiente 
 
 ```mysql
 CREATE TABLE ConsumoEnergetico ( id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, fecha TIMESTAMP
-DEFAULT CURRENT_TIMESTAMP, nombre CHAR(248) NOT NULL, irms FLOAT(4,2), pot FLOAT(5,2) );
+DEFAULT CURRENT_TIMESTAMP, nombre CHAR(248) NOT NULL, irms FLOAT(4,2), pot FLOAT(6,3) );
 ```
 Ya creada podemos usar estos comandos para verificar que funciona:
 ```mysql
-INSERT INTO ConsumoEnergetico (nombre, irms, pot) VALUES ('usuario', 1.37, 45.66);
+INSERT INTO ConsumoEnergetico (nombre, irms, pot) VALUES ('usuario', 1.37, 0.065);
 
 SELECT * FROM ConsumoEnergetico;
 ```
