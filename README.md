@@ -94,9 +94,209 @@ Circuito
 <a id="Codigo"></a>
 ## Codigo
 
-```arduino
+```c++
 
-<Codigo>
+/*
+
+Envia corriente y potencia del SCT013 en JSON 
+por MQTT con el ESP32-WROOM32 con configuracion no bloqueante
+
+por: Roberto Giordano Gonzalez Valencia
+Fecha:  de julio de 2024
+
+Este codigo esta basado en otro codigo que se conecta al DHT11 el cual fue
+creado por Hugo Escalpelo el 6 de julio de 2023 el cual fue modificado para
+este proyecto el cual mide corriente y potencia con el sensor SCT013.
+El siguiente codigo es una modificacion del antes mencionado. 
+
+*/
+
+// Bibliotecas
+#include <WiFi.h> // Biblioteca WiFi
+#include <PubSubClient.h> // Biblioteca MQTT
+#include "EmonLib.h" // Biblioteca para el sensor SCT013
+
+// Datos para el internet y el mqtt
+const char* ssid = "INFINITUM9967";
+const char* password = "Ea8Fd3Sq8i";
+const char* mqtt_server = "192.168.1.73";
+
+//esta variable es el voltaje que proporciona CFE en Mexico, este puede variar dependiendo de cada casa y se puede modificar
+float voltajeRed = 127.0;
+
+// Variables para envio de mensajes
+unsigned long lastMsg = 0; // Contador de tiempo mensajes
+#define MSG_BUFFER_SIZE  (50) // Buffer para enviï¿½o de mensajes
+char msg[MSG_BUFFER_SIZE]; // Variable para conversion de mensaje
+
+// Declaracion del LED e indicador
+int statusLedPin = 33;  // Esta variable controla el led para saber si se conecto a internet la esp32
+int RelevadorPin = 4; // Esta variable controla el relevador
+bool statusLed = 0;// Bandera que me dice si el led esta encendido o apagado
+
+// Variables para el manejo de tiempo no bloqueante
+double timeLast, timeNow; // Variables para el control de tiempo no bloqueante
+long lastReconnectAttempt = 0; // Variable para el conteo de tiempo entre intentos de reconexion
+double WAIT_MSG = 2500;  // Espera de 2.5 segundos entre mensajes
+double RECONNECT_WAIT = 5000; // Espera de 5 segundos entre conexiones
+
+// Temas MQTT
+const char* mqttMsg = "codigoIoT/esp32/msg";
+const char* mqttCallback = "codigoIoT/esp32/callback";
+const char* mqttDHT = "codigoIoT/esp32/SCT013/ConsumoEnergetico";
+
+// iniciadores de librerias WiFi, MQTT y sensor SCT013
+WiFiClient espClient; // iniciador para conexion a WiFi
+PubSubClient client(espClient); // iniciador para conexion a MQTT
+EnergyMonitor emon1; // Objeto que inicia el sensor SCT013
+
+// Funcion para conectarse a Internet
+void setup_wifi() {
+  delay(10);
+  
+  // Mensajes de intento de conexion
+  Serial.println();
+  Serial.print("Conectando a: ");
+  Serial.println(ssid);
+
+  // Funciones de conexion
+  WiFi.mode(WIFI_STA); // STA inicia el micro controlador como cliente, para accespoint se usa WIFI_AP
+  WiFi.begin(ssid, password); // llama los valores ya declarados de red
+
+  // Secuencia que hace parpadear el LED durante el intento de conexion. Logica Inversa
+  while (WiFi.status() != WL_CONNECTED) {
+    digitalWrite (statusLedPin, LOW); // Apagar LED
+    delay(500); // Dado que es de suma importancia esperar a la conexion, debe usarse espera en vez de bloqueante
+    digitalWrite (statusLedPin, HIGH); // Encender LED
+    Serial.print(".");  // Indicador de progreso
+    delay (5); // Espera asimetrica para dar un parpadeo al led
+  }
+
+  // Esta funcion mejora los resultados de las funciones aleatorias y toma como semilla el contador de tiempo
+  randomSeed(micros());
+
+  // Mensajes de confirmacion
+  Serial.println("");
+  Serial.println("Conectado a WiFi");
+  Serial.println("Direccion IP: ");
+  Serial.println(WiFi.localIP());
+}
+
+// Funcion Callback, Se ejecuta al recivir un mensaje
+void callback(char* topic, byte* payload, unsigned int length) {
+  Serial.print("Mensaje recibido en [");
+  Serial.print(topic);
+  Serial.print("] ");
+
+  // Esta secuencia imprime y construye el mensaje recibido
+  String messageTemp;
+  for (int i = 0; i < length; i++) {
+    Serial.print((char)payload[i]); // Imprime
+    messageTemp += (char)payload[i]; // Construye el mensaje en una variable String
+  }
+  Serial.println();
+
+  // Se comprueba que el mensaje se haya concatenado correctamente
+  Serial.println();
+  Serial.print ("Mensaje concatenado en una sola variable: ");
+  Serial.println (messageTemp);
+
+  //activa o desactiva el Relevador al recibir un true o false
+  if(messageTemp == "true") {
+    Serial.println("Led encendido");
+    digitalWrite(RelevadorPin, HIGH);
+  }
+  else if(messageTemp == "false") {
+    Serial.println("Led apagado");
+    digitalWrite(RelevadorPin, LOW);
+  }
+}
+
+// Funcion de reconexion. Devuelve un valor booleano para indicar exito o falla
+boolean reconnect() {
+  Serial.print("Intentando conexion MQTT...");
+  // Generar un ID aleatorio
+  String clientId = "ESP32Client-";
+  clientId += String(random(0xffff), HEX);
+  // Intentar conexion
+  if (client.connect(clientId.c_str())) {
+    // Una vez conectado, da una retroalimentacion
+    client.publish(mqttMsg,"Conectado");
+    // Funcion de suscripcion
+    client.subscribe(mqttCallback);
+  } else {
+      // si da error
+      Serial.print("Error rc=");
+      Serial.print(client.state());
+      Serial.println(" Intentando de nuevo");
+      // Espera 1 segundo
+      delay(1000);
+    }
+  return client.connected();
+}
+
+// Inicio del codigo
+void setup() {
+
+  // Inician las comunicaciones
+  Serial.begin(115200); //baudios en los que trabaja la ESP32
+  emon1.current(34, 7.5);//Aqui se declara el pin de entrada al cual le llegara la seï¿½al leida por el SCT013 y la constante de calibracion para la ESP32
+  //(pin de entrada, constante)
+
+  // Configuracion de pines
+  pinMode (statusLedPin, OUTPUT);// Se configura el pin como salida 
+  pinMode (RelevadorPin, OUTPUT);// Se configura el pin como salida
+  digitalWrite (statusLedPin, LOW);// Se comienza con el LED apagado
+  digitalWrite (RelevadorPin, LOW);// Se comienza con el Relevador apagado
+
+  // Iniciar conexiones  
+  setup_wifi();
+  client.setServer(mqtt_server, 1883);
+  client.setCallback(callback);
+
+ 
+
+  // Iniciar secuencias de tiempo
+  timeLast = millis (); // Inicia el control de tiempo
+  lastReconnectAttempt = timeLast; // Control de secuencias de tiempo
+}
+
+// Cuerpo del codigo
+void loop() {
+  
+  double Irms = emon1.calcIrms(22500); //Aqui calcula la corriente en RMS y el valor dentro del "()" es la cantidad de muestras que se toman para hacer el calculo
+
+  float potencia = Irms * voltajeRed; //Calculamos la potencia a partir de P=I*V dando el valor en W
+
+  // Funcion principal de seguimiento de tiempo
+  timeNow = millis();
+
+  // Funcion de conexion y seguimiento
+  if (!client.connected()) { // Se pregunta si no existe conexion
+    if (timeNow - lastReconnectAttempt > RECONNECT_WAIT) { // Espera de reconexion
+      // Intentar reconectar
+      if (reconnect()) {
+        lastReconnectAttempt = timeNow; // Actualizacion de seguimiento de tiempo
+      }
+    }
+  } else {
+    // Funcion de seguimiento
+    client.loop();
+  }
+  
+  // Enviar un mensaje cada WAIT_MSG
+  if (timeNow - timeLast > WAIT_MSG && client.connected() == 1) { // Manda un mensaje por MQTT cada cinco segundos
+    timeLast = timeNow; // Actualizacion de seguimiento de tiempo    
+
+    //Se construye el string correspondiente al JSON que contiene 3 variables
+    String json = "{\"id\":\"Ventilador\",\"irms\":"+String(Irms)+",\"pot\":"+String(potencia)+"}";
+    Serial.println(json); // Se imprime en monitor solo para poder visualizar que el string esta correctamente creado
+    int str_len = json.length() + 1;//Se calcula la longitud del string
+    char char_array[str_len];//Se crea un arreglo de caracteres de dicha longitud
+    json.toCharArray(char_array, str_len);//Se convierte el string a char array    
+    client.publish(mqttDHT, char_array); // Esta es la funcion que envia los datos por MQTT, especifica el tema y el valor
+  }// fin del if (timeNow - timeLast > wait)
+}
 
 ```
 
@@ -109,7 +309,7 @@ Circuito
 
 Aqui viene la configuracion del Node-red en formato JSON para que dentro de tu Node-red presiones en el menu de Hamburgesa, import y pegues este codigo:
 
-```json
+```javascrip
 
 ```
 
