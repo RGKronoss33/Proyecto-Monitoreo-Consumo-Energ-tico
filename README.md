@@ -1,5 +1,5 @@
 <a id="Presentación"></a>
-# Proyecto-Monitoreo-Consumo-Energ-tico
+# Proyecto-Monitoreo-Consumo-Energetico
 Este proyecto utiliza una ESP32, una Raspberry Pi, entre otros componentes para su funcionamiento. Con el podrás medir la corriente y potencia de uno o más dispositivos conectados a un multi contacto.
 
 <a id="Índice"></a>
@@ -75,7 +75,8 @@ USE consumo;
 Una vez destro de nuestra **DATABASE** crearemos nuestra tabla con el siguiente comando:
 
 ```mysql
-CREATE TABLE ConsumoEnergetico ( id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP, nombre CHAR(248) NOT NULL, irms FLOAT(4,2), pot FLOAT(5,2) );
+CREATE TABLE ConsumoEnergetico ( id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, fecha TIMESTAMP
+DEFAULT CURRENT_TIMESTAMP, nombre CHAR(248) NOT NULL, irms FLOAT(4,2), pot FLOAT(5,2) );
 ```
 Ya creada podemos usar estos comandos para verificar que funciona:
 ```mysql
@@ -302,6 +303,8 @@ void loop() {
 
 <a id="Telegram"></a>
 ## Bot Telegram
+
+
 
 
 <a id="Node"></a>
