@@ -101,8 +101,8 @@ Circuito
 Envia corriente y potencia del SCT013 en JSON 
 por MQTT con el ESP32-WROOM32 con configuracion no bloqueante
 
-por: Roberto Giordano Gonzalez Valencia
-Fecha:  de julio de 2024
+Creado por: Roberto Giordano Gonzalez Valencia
+Fecha: 26 de julio de 2024
 
 Este codigo esta basado en otro codigo que se conecta al DHT11 el cual fue
 creado por Hugo Escalpelo el 6 de julio de 2023 el cual fue modificado para
@@ -117,9 +117,9 @@ El siguiente codigo es una modificacion del antes mencionado.
 #include "EmonLib.h" // Biblioteca para el sensor SCT013
 
 // Datos para el internet y el mqtt
-const char* ssid = "INFINITUM9967";
-const char* password = "Ea8Fd3Sq8i";
-const char* mqtt_server = "192.168.1.73";
+const char* ssid = "**********";
+const char* password = "**********";
+const char* mqtt_server = "*.*.*.*";
 
 //esta variable es el voltaje que proporciona CFE en Mexico, este puede variar dependiendo de cada casa y se puede modificar
 float voltajeRed = 127.0;
@@ -289,7 +289,7 @@ void loop() {
     timeLast = timeNow; // Actualizacion de seguimiento de tiempo    
 
     //Se construye el string correspondiente al JSON que contiene 3 variables
-    String json = "{\"id\":\"Ventilador\",\"irms\":"+String(Irms)+",\"pot\":"+String(potencia)+"}";
+    String json = "{\"id\":\"usuario\",\"irms\":"+String(Irms)+",\"pot\":"+String(potencia)+"}";
     Serial.println(json); // Se imprime en monitor solo para poder visualizar que el string esta correctamente creado
     int str_len = json.length() + 1;//Se calcula la longitud del string
     char char_array[str_len];//Se crea un arreglo de caracteres de dicha longitud
