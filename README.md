@@ -100,10 +100,18 @@ Circuito
 
 ```
 
+<a id="Telegram"></a>
+## Bot Telegram
+
+
 <a id="Node"></a>
 ## Configuración Node-Red
 
-Node-red
+Aqui viene la configuracion del Node-red en formato JSON para que dentro de tu Node-red presiones en el menu de Hamburgesa, import y pegues este codigo:
+
+```json
+
+```
 
 <a id="Funcionamiento"></a>
 ## Funcionamiento del proyecto
