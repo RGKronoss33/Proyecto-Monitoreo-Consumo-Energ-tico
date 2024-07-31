@@ -117,9 +117,9 @@ El siguiente codigo es una modificacion del antes mencionado.
 #include "EmonLib.h" // Biblioteca para el sensor SCT013
 
 // Datos para el internet y el mqtt
-const char* ssid = "**********";
-const char* password = "**********";
-const char* mqtt_server = "*.*.*.*";
+const char* ssid = "******";
+const char* password = "******";
+const char* mqtt_server = "***.***.*.**";
 
 //esta variable es el voltaje que proporciona CFE en Mexico, este puede variar dependiendo de cada casa y se puede modificar
 float voltajeRed = 127.0;
