@@ -310,9 +310,10 @@ Abrimos **Telegram** y buscamos el la lupa **BotFather** y lo inciamos con el bo
 
 Una vez iniciado intriducimos **/newbot** para crear nuestro bot al que le mandaremos instrucciones para controlar los pines de la **ESP32**.
 
-Despues de mandar **/newbot** nos preguntara cual será el nombre de nuestro bot al cual le podremos poner cualquier nombre como el siguiente: **Bot Consumo Energetico**. Una vez mandado nos pedira otro nombre para el bot el cual usaremos en **Node-red** el cual puede ser el siguiente : **consumo_energetico_bot**.
-Una vez que mandemos el nombre nos dara un mensaje en el cual nos dara en una parte algo parecido a **Use this token to access the HTTP API:** y ese sera el token que utilizaremos mas adelante en **Node-red**.   
+Despues de mandar **/newbot** nos preguntara cual será el nombre de nuestro bot al cual le podremos poner cualquier nombre como el siguiente: **Bot Consumo Energetico**. Una vez mandado nos pedira otro nombre para el bot el cual usaremos en **Node-red** el cual puede ser el siguiente : **consumo_energetico_bot**.   
 - **NOTA: Es importante que lleve "_" si el nombre lo quieres poner espaciado y que al final termine con *bot***.
+
+Una vez que mandemos el nombre nos dara un mensaje en el cual nos dara en una parte algo parecido a **Use this token to access the HTTP API:** y ese sera el token que utilizaremos mas adelante en **Node-red**.
 
 Ahora para que le puedan llegar los mensajes, ahi mismo en el **BotFather** mandamos un **/setprivacy** y elegimos nuestro bot. Despues de eso mandamos un **Disable** y con eso ya esta configurado el bot.
 
