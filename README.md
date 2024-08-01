@@ -1074,7 +1074,9 @@ Y con esto ya podremos importar el siguiente codigo de **Node-red** en formato *
 <a id="ConfNode"></a>
 ## Configuración del Node-red
 
-Una vez dentro de **Node-red** 
+Una vez importado el codigo a **Node-red**, accedemos a cada uno de los nodos **function** que llevan por nombre **MandaMensaje** 1, 2, ect. e ingresamos nuestro chatId en numero y el link del node-red ui en que que lo pide (solo en el 4 lo pide).
+
+Ahora pasamos al nodo **Telegram receiver** damos en el simbolo "+" y añadimos el nombre de nuestro bot el tipo "**_bot**" y el token. Despues ingresamos nuestro usuario en **Users** y nuestro chatId en **ChatIds**. Pasamos ahora al nodo **Telegram sender** y elegimos el nombre de nuestro bot donde nos aparece **none** en **Bot**.
 
 <a id="Funcionamiento"></a>
 ## Funcionamiento del proyecto
