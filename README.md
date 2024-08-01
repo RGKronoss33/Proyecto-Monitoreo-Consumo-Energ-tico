@@ -136,6 +136,10 @@ pin COMUN del relevador----------parte 2 del cable dividido
 
 ```
 
+Al inicio del proyecto se encuentran unas imagenes las cuales te pueden ayudar para armar el circuito y de igual forma el siguiente link te puede ayudar de una forma un poco más detallada de como armarlo: https://youtu.be/C2w8x6SPWjU?si=evAs32J25_ByD93T
+
+[Regresar al inicio](#Presentación)
+
 <a id="Codigo"></a>
 ## Código ESP32
 
