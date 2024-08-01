@@ -21,6 +21,8 @@ Este proyecto utiliza una ESP32, una Raspberry Pi, entre otros componentes para 
 
 1. [Código Node-Red](#Node)
 
+1. [Configuración Node-red](#ConfNode)
+
 1. [Funcionamiento del proyecto](#Funcionamiento)
 
 <a id="Materiales"></a>
