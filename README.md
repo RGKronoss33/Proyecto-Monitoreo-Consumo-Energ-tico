@@ -59,6 +59,8 @@ Este proyecto utiliza una ESP32, una Raspberry Pi, entre otros componentes para 
 
 * Tener conocimientos básicos de cómo programar en **C++** ya que este es el lenguaje utilizado por la **IDE de Arduino**.
 
+[Regresar al indice](#Índice)
+
 <a id="Base_de_datos"></a>
 ## Creacion de la base de datos
 
@@ -90,6 +92,8 @@ SELECT * FROM ConsumoEnergetico;
 ```
 
 Y con esto tendremos nuestra base de datos ya creada.
+
+[Regresar al indice](#Índice)
 
 <a id="Circuito"></a>
 ## Circuito
@@ -331,11 +335,14 @@ Ahora para que le puedan llegar los mensajes, ahi mismo en el **BotFather** mand
 
 Despues salimos del **BotFather** y ahora buscamos **IDBot**, dentro de el mandamos **/getid** el cual sera nuestro chatId que nos servira para el **Node-red**.
 
+[Regresar al indice](#Índice)
 
 <a id="Node"></a>
 ## Código Node-Red
 
-Aqui viene la configuracion del **Node-red** en formato **JSON** para que dentro de tu **Node-red** presiones en el menu de Hamburgesa, import y pegues este codigo:
+Primero que nada debemos de instalar lo siguiente. En **Node-red** nos dirijimos al menu de hamburgesa (tres lineas horizontales) y seleccionamos **Manage palette** en **install** y buscamos: **node-red-dashboard**, **node-red-node-mysql** y **node-red-contrib-telegrambot** y los instalamos.
+
+Y con esto ya podremos importar el siguiente codigo de **Node-red** en formato **JSON**. Para ello accedemos al menu de Hamburgesa, **import** y pegas el siguiente codigo:
 
 ```javascrip
 [
