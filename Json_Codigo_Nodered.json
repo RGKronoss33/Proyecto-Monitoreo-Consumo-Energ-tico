@@ -1,0 +1,722 @@
+[
+    {
+        "id": "63ac5038ecbbd656",
+        "type": "tab",
+        "label": "Consumo Energetico",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "64fc961e9271b5a6",
+        "type": "mqtt in",
+        "z": "63ac5038ecbbd656",
+        "name": "",
+        "topic": "codigoIoT/esp32/SCT013/ConsumoEnergetico",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "cad3536bf5f60c36",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 210,
+        "y": 40,
+        "wires": [
+            [
+                "8ef12f854856e6b9"
+            ]
+        ]
+    },
+    {
+        "id": "268c9c6e1958f6c6",
+        "type": "function",
+        "z": "63ac5038ecbbd656",
+        "name": "Extraer Corriente",
+        "func": "msg.topic=msg.payload.ID;\nmsg.payload=msg.payload.irms;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 690,
+        "y": 60,
+        "wires": [
+            [
+                "b9e85fc9748db356",
+                "2ab5cb1ed049e833"
+            ]
+        ]
+    },
+    {
+        "id": "e67aeeb5d9f9cd66",
+        "type": "function",
+        "z": "63ac5038ecbbd656",
+        "name": "Extraer Potencia kW",
+        "func": "msg.topic=msg.payload.ID;\nmsg.payload=(msg.payload.pot *0.001).toFixed(3);\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 720,
+        "y": 160,
+        "wires": [
+            [
+                "60b78f460eb433d7",
+                "e30f5a1cb82ece48"
+            ]
+        ]
+    },
+    {
+        "id": "2ab5cb1ed049e833",
+        "type": "ui_gauge",
+        "z": "63ac5038ecbbd656",
+        "name": "",
+        "group": "08d40e027fb0f7f9",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Corriente. Actual",
+        "label": "A",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "10",
+        "colors": [
+            "#20cdff",
+            "#2ee600",
+            "#ff0202"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 1050,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "e30f5a1cb82ece48",
+        "type": "ui_gauge",
+        "z": "63ac5038ecbbd656",
+        "name": "",
+        "group": "f323906c191efaa9",
+        "order": 0,
+        "width": "0",
+        "height": "0",
+        "gtype": "donut",
+        "title": "Potencia. Actual (kW)",
+        "label": "kW",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "1",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 1080,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "b9e85fc9748db356",
+        "type": "ui_chart",
+        "z": "63ac5038ecbbd656",
+        "name": "",
+        "group": "b78994697d2872cb",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "label": "Corriente en el tiempo (A)",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "Esperando datos",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "10",
+        "removeOlder": "4",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#ff790b",
+            "#31d0ff",
+            "#006fbf",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1050,
+        "y": 40,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c5cae7eddb55de01",
+        "type": "mysql",
+        "z": "63ac5038ecbbd656",
+        "mydb": "",
+        "name": "",
+        "x": 1070,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e1c14ab5fce0c6d7",
+        "type": "function",
+        "z": "63ac5038ecbbd656",
+        "name": "Generar consulta",
+        "func": "//INSERT INTO ConsumoEnergetico (nombre, temperatura, humedad) VALUES (x, y, z);\n//Generar inicio del query\nmsg.topic = \"INSERT INTO ConsumoEnergetico (nombre, irms, pot) VALUES (\";\n//Concatenar identidad del usuario\nmsg.topic += \"'\" + msg.payload.ID + \"'\" + \", \";\n//Concatenar temperatura\nmsg.topic += msg.payload.irms + \", \";\n//Concatenar humedad\nmsg.topic += msg.payload.pot + \");\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 710,
+        "y": 260,
+        "wires": [
+            [
+                "c5cae7eddb55de01"
+            ]
+        ]
+    },
+    {
+        "id": "31cca0cb9c802063",
+        "type": "inject",
+        "z": "63ac5038ecbbd656",
+        "name": "",
+        "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "SELECT * FROM ConsumoEnergetico;",
+        "x": 190,
+        "y": 320,
+        "wires": [
+            [
+                "908da500cbb634ef"
+            ]
+        ]
+    },
+    {
+        "id": "908da500cbb634ef",
+        "type": "mysql",
+        "z": "63ac5038ecbbd656",
+        "mydb": "",
+        "name": "",
+        "x": 630,
+        "y": 320,
+        "wires": [
+            [
+                "c0bcb71a15454102"
+            ]
+        ]
+    },
+    {
+        "id": "c0bcb71a15454102",
+        "type": "debug",
+        "z": "63ac5038ecbbd656",
+        "name": "resultado",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1080,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "60b78f460eb433d7",
+        "type": "ui_chart",
+        "z": "63ac5038ecbbd656",
+        "name": "",
+        "group": "b78994697d2872cb",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "label": "Potencia en el tiempo (kW)",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "Esperando datos",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "1",
+        "removeOlder": "4",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#ff790b",
+            "#31d0ff",
+            "#006fbf",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1060,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8ef12f854856e6b9",
+        "type": "json",
+        "z": "63ac5038ecbbd656",
+        "name": "",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 450,
+        "y": 160,
+        "wires": [
+            [
+                "268c9c6e1958f6c6",
+                "e67aeeb5d9f9cd66",
+                "e1c14ab5fce0c6d7",
+                "8be0be335bd5459e"
+            ]
+        ]
+    },
+    {
+        "id": "ede93f93a86a6d25",
+        "type": "mqtt out",
+        "z": "63ac5038ecbbd656",
+        "name": "",
+        "topic": "codigoIoT/esp32/callback",
+        "qos": "2",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "cad3536bf5f60c36",
+        "x": 1030,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "aa191a8868232f84",
+        "type": "ui_switch",
+        "z": "63ac5038ecbbd656",
+        "name": "",
+        "label": "Dispositivo",
+        "tooltip": "",
+        "group": "6ef270b50846b685",
+        "order": 0,
+        "width": "0",
+        "height": "0",
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 590,
+        "y": 400,
+        "wires": [
+            [
+                "6c1e4b044d6e490a",
+                "ede93f93a86a6d25"
+            ]
+        ]
+    },
+    {
+        "id": "d2df4d0143bce302",
+        "type": "telegram receiver",
+        "z": "63ac5038ecbbd656",
+        "name": "",
+        "bot": "",
+        "saveDataDir": "",
+        "filterCommands": false,
+        "x": 130,
+        "y": 400,
+        "wires": [
+            [
+                "7db2e20549814c04"
+            ],
+            [
+                "7db2e20549814c04"
+            ]
+        ]
+    },
+    {
+        "id": "7db2e20549814c04",
+        "type": "function",
+        "z": "63ac5038ecbbd656",
+        "name": "MansajeInterpretado",
+        "func": "if (msg.payload.content === \"Apagar el ventilador\"){\n    msg.payload = true;\n} else if (msg.payload.content === \"Prender el ventilador\"){\n    msg.payload = false;          \n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 400,
+        "wires": [
+            [
+                "aa191a8868232f84"
+            ]
+        ]
+    },
+    {
+        "id": "02ebd232f86a956f",
+        "type": "telegram sender",
+        "z": "63ac5038ecbbd656",
+        "name": "",
+        "bot": "",
+        "haserroroutput": false,
+        "outputs": 1,
+        "x": 1050,
+        "y": 540,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6c1e4b044d6e490a",
+        "type": "function",
+        "z": "63ac5038ecbbd656",
+        "name": "MandaMensaje1",
+        "func": "if (msg.payload === true ){\n    msg.payload = {\n        \"chatId\": ingresa tu chatid en numero,\n        \"type\": \"message\",\n        \"content\": \"El ventilador se apago con exito!\\n -Manda \\\"Prender el ventilador\\\" para conectarlo nuevamente\"\n    }\n} else if (msg.payload === false){\n    msg.payload = {\n        \"chatId\": ingresa tu chatid en numero,\n        \"type\": \"message\",\n        \"content\": \"El ventilador se conecto nuevamente con exito!\\n -Manda \\\"Apagar el ventilador\\\" para apagarlo nuevamente\"\n    }\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 18,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 770,
+        "y": 480,
+        "wires": [
+            [
+                "02ebd232f86a956f"
+            ]
+        ]
+    },
+    {
+        "id": "7a4f37e3186c88eb",
+        "type": "function",
+        "z": "63ac5038ecbbd656",
+        "name": "MandaMensaje2",
+        "func": "msg.payload = {\n    \"chatId\": ingresa tu chatid en numero,\n    \"type\": \"message\",\n    \"content\": \"Ya paso una hora de que se conecto el dispositivo.\"\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 9,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 770,
+        "y": 540,
+        "wires": [
+            [
+                "02ebd232f86a956f",
+                "60da989b7565942e"
+            ]
+        ]
+    },
+    {
+        "id": "60da989b7565942e",
+        "type": "delay",
+        "z": "63ac5038ecbbd656",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 580,
+        "y": 600,
+        "wires": [
+            [
+                "f42a1d182d40730d"
+            ]
+        ]
+    },
+    {
+        "id": "f42a1d182d40730d",
+        "type": "function",
+        "z": "63ac5038ecbbd656",
+        "name": "MandaMensaje3",
+        "func": "msg.payload = {\n    \"chatId\": ingresa tu chatid en numero,\n    \"type\": \"message\",\n    \"content\": \"¿Qué desea hacer? \\n-Apagar el ventilador\\n-Dejar que siga recopilando datos (para ello no mande nada)\"\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 9,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 770,
+        "y": 600,
+        "wires": [
+            [
+                "02ebd232f86a956f",
+                "a1b91b4ff2d229b4"
+            ]
+        ]
+    },
+    {
+        "id": "a1b91b4ff2d229b4",
+        "type": "delay",
+        "z": "63ac5038ecbbd656",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 580,
+        "y": 660,
+        "wires": [
+            [
+                "e18acfbd9ae447dd"
+            ]
+        ]
+    },
+    {
+        "id": "e18acfbd9ae447dd",
+        "type": "function",
+        "z": "63ac5038ecbbd656",
+        "name": "MandaMensaje4",
+        "func": "msg.payload = {\n    \"chatId\": ingresa tu chatid en numero,\n    \"type\": \"message\",\n    \"content\": \"O visita el siguiente link para revisar el estado de consumo:\\n-inserta el link de node-red ui\"\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 9,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 770,
+        "y": 660,
+        "wires": [
+            [
+                "02ebd232f86a956f"
+            ]
+        ]
+    },
+    {
+        "id": "8be0be335bd5459e",
+        "type": "function",
+        "z": "63ac5038ecbbd656",
+        "name": "Extraer Potencia W",
+        "func": "msg.topic=msg.payload.ID;\nmsg.payload=msg.payload.pot;\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 710,
+        "y": 220,
+        "wires": [
+            [
+                "96e258d6a99bc499"
+            ]
+        ]
+    },
+    {
+        "id": "96e258d6a99bc499",
+        "type": "ui_gauge",
+        "z": "63ac5038ecbbd656",
+        "name": "",
+        "group": "f323906c191efaa9",
+        "order": 0,
+        "width": "0",
+        "height": "0",
+        "gtype": "donut",
+        "title": "Potencia. Actual (W)",
+        "label": "W",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "1000",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 1080,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "ab71ac8f8ba93f0d",
+        "type": "inject",
+        "z": "63ac5038ecbbd656",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "3600",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 110,
+        "y": 540,
+        "wires": [
+            [
+                "7a4f37e3186c88eb"
+            ]
+        ]
+    },
+    {
+        "id": "cad3536bf5f60c36",
+        "type": "mqtt-broker",
+        "name": "Mosquitto Pi RGK",
+        "broker": "192.168.1.73",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "08d40e027fb0f7f9",
+        "type": "ui_group",
+        "name": "Corriente",
+        "tab": "7d055cfb531cd518",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "f323906c191efaa9",
+        "type": "ui_group",
+        "name": "Potencia",
+        "tab": "7d055cfb531cd518",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "b78994697d2872cb",
+        "type": "ui_group",
+        "name": "Histórico",
+        "tab": "7d055cfb531cd518",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "6ef270b50846b685",
+        "type": "ui_group",
+        "name": "Control Prender/Apagar",
+        "tab": "7d055cfb531cd518",
+        "order": 4,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "7d055cfb531cd518",
+        "type": "ui_tab",
+        "name": "Consumo Energetico ESP32",
+        "icon": "wi-wu-mostlysunny",
+        "order": 2,
+        "disabled": false,
+        "hidden": false
+    }
+]
