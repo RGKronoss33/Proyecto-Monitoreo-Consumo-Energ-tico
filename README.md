@@ -311,6 +311,8 @@ void loop() {
 
 ```
 
+[Regresar al indice](#Índice)
+
 <a id="Telegram"></a>
 ## Bot Telegram
 
@@ -1059,6 +1061,8 @@ Aqui viene la configuracion del **Node-red** en formato **JSON** para que dentro
     }
 ]
 ```
+
+[Regresar al indice](#Índice)
 
 <a id="ConfNode"></a>
 ## Configuración del Node-red
