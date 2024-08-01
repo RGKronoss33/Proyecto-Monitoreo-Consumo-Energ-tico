@@ -140,7 +140,9 @@ pin COMUN del relevador----------parte 2 del cable dividido
 
 ```
 
-Al inicio del proyecto se encuentran unas imagenes las cuales te pueden ayudar para armar el circuito y de igual forma el siguiente link te puede ayudar de una forma un poco más detallada de como armarlo: https://youtu.be/C2w8x6SPWjU?si=evAs32J25_ByD93T
+Al inicio del proyecto se encuentran unas imagenes las cuales te pueden ayudar para armar el circuito. El siguiente link es para apoyarse y poder hacer el circuito de conexion del SCT013, ademas de que se encuentra una imagen del mismo en el inicio.
+
+De igual forma el siguiente link te puede ayudar de una forma un poco más detallada de como armarlo: https://youtu.be/C2w8x6SPWjU?si=evAs32J25_ByD93T
 
 [Regresar al inicio](#Presentación)
 
