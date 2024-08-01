@@ -115,7 +115,9 @@ Pines ESP32----------Circuito
 3v3------------------pata libre de resistencia 2 470kΩ
 1GND-----------------negativo del capacitor
 2GND-----------------pin emisor del transistor
-3GND-----------------resistensia 330Ω
+3GND-----------------resistencia 330Ω
+pin34----------------pin TIP del TRRS
+pin33----------------LED wifi
 ```
 
 
@@ -165,7 +167,7 @@ unsigned long lastMsg = 0; // Contador de tiempo mensajes
 char msg[MSG_BUFFER_SIZE]; // Variable para conversion de mensaje
 
 // Declaracion del LED e indicador
-int statusLedPin = 33;  // Esta variable controla el led para saber si se conecto a internet la esp32
+int statusLedPin = 33;  // led wifi Esta variable controla el led para saber si se conecto a internet la esp32
 int RelevadorPin = 4; // Esta variable controla el relevador
 bool statusLed = 0;// Bandera que me dice si el led esta encendido o apagado
 
