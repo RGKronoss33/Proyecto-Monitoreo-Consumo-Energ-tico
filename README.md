@@ -27,6 +27,8 @@ Este proyecto utiliza una ESP32, una Raspberry Pi, entre otros componentes para 
 
 1. [Funcionamiento del proyecto](#Funcionamiento)
 
+1. [Código IoT](#IoT)
+
 <a id="Materiales"></a>
 ## Materiales a utilizar                                    
 
@@ -1124,4 +1126,9 @@ Posteriormente nos dirijimos al otro nodo **mysql** y elegimos el nombre de nues
 <a id="Funcionamiento"></a>
 ## Funcionamiento del proyecto
 
-Funcionamiento
+El siguiente link es un video demostrativo de como funciona el proyecto: https://youtu.be/K7TPRUQqo40?si=qP8N0YSVltJQ7nG-
+
+<a id="IoT"></a>
+## Código IoT
+
+Este proyecto fue realizado en el marco del curso IoT Essentials Developer impartido por [Codigo IoT ](https://www.codigoiot.com/) y organizado por la [Asociación Mexicana del Internet de las Cosas](https://www.asociacioniot.org/).
