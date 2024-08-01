@@ -112,12 +112,26 @@ En el siguiente recuadro se muestra una tabla de que pines de la ESP32 van a que
 
 ```
 Pines ESP32----------Circuito
-3v3------------------pata libre de resistencia 2 470kΩ
+
+3v3------------------pata 2 de la resistencia 2 470kΩ
 1GND-----------------negativo del capacitor
 2GND-----------------pin emisor del transistor
-3GND-----------------resistencia 330Ω
+3GND-----------------pata 2 resistencia 330Ω
 pin34----------------pin TIP del TRRS
 pin33----------------LED wifi
+pin04----------------pin base del transistor
+5v-------------------un pin del inductor del relevador
+
+Dentro del propio circuito
+
+pin SLEEVE del TRRS--------------positivo del capacitor
+pata 1 de la resistencia 1-------negativo del capacitor
+cable puente de positivo capacitor a pata 2 de la resistencia 1 y a pata 1 de la resistencia 2 de 470kΩ
+pata 1 resistencia 330Ω----------negativo LED wifi
+colector del transistor----------otra pata del inductor del relevador
+pin NC del relevador-------------parte 1 del cable dividido
+pin COMUN del relevador----------parte 2 del cable dividido
+
 ```
 
 
