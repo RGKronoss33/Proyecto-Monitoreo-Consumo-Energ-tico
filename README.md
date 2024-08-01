@@ -1,6 +1,6 @@
 <a id="Presentación"></a>
 # Proyecto-Monitoreo-Consumo-Energetico
-Este proyecto utiliza una ESP32, una Raspberry Pi, entre otros componentes para su funcionamiento. Con el podrás medir la corriente y potencia de uno o más dispositivos conectados a un multi contacto.
+Este proyecto utiliza una ESP32, una Raspberry Pi, entre otros componentes para su funcionamiento. Con el podrás medir la corriente y potencia de uno o más dispositivos conectados a un multi contacto y podras prender o apagar el multi contacto con un mensaje de telegram.
 
 <a id="Índice"></a>
 ## Índice
@@ -50,7 +50,7 @@ Este proyecto utiliza una ESP32, una Raspberry Pi, entre otros componentes para 
 
 * 1 LED (cualquier color)
 
-* Cables Jumper macho-hembra
+* Cables Jumper macho-hembra, macho-macho, etc
 
 * 1 o 2 Protoboard
 
@@ -64,6 +64,8 @@ Este proyecto utiliza una ESP32, una Raspberry Pi, entre otros componentes para 
 ## Requisitos para empezar
 
 * Saber la IP de nuestro Raspberry Pi en el formato *0.0.0.0*
+
+* Identificar la fase y el neutro que nos suministra nuestra casa.
  
 * Tener previamente instalado la **IDE de Arduino**, **Node-red** y **Mysql** (*mariadb-server*) en tu Raspberry Pi.
 
@@ -1132,3 +1134,5 @@ El siguiente link es un video demostrativo de como funciona el proyecto: https:/
 ## Código IoT
 
 Este proyecto fue realizado en el marco del curso IoT Essentials Developer impartido por [Codigo IoT ](https://www.codigoiot.com/) y organizado por la [Asociación Mexicana del Internet de las Cosas](https://www.asociacioniot.org/).
+
+[Regresar al inicio](#Presentación)
