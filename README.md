@@ -204,7 +204,7 @@ double RECONNECT_WAIT = 5000; // Espera de 5 segundos entre conexiones
 // Temas MQTT
 const char* mqttMsg = "codigoIoT/esp32/msg";
 const char* mqttCallback = "codigoIoT/esp32/callback";
-const char* mqttDHT = "codigoIoT/esp32/SCT013/ConsumoEnergetico";
+const char* mqttSCT = "codigoIoT/esp32/SCT013/ConsumoEnergetico";
 
 // iniciadores de librerias WiFi, MQTT y sensor SCT013
 WiFiClient espClient; // iniciador para conexion a WiFi
@@ -264,11 +264,11 @@ void callback(char* topic, byte* payload, unsigned int length) {
 
   //activa o desactiva el Relevador al recibir un true o false
   if(messageTemp == "true") {
-    Serial.println("Led encendido");
+    Serial.println("Dispositivo apagado");
     digitalWrite(RelevadorPin, HIGH);
   }
   else if(messageTemp == "false") {
-    Serial.println("Led apagado");
+    Serial.println("Dispositivo encendido");
     digitalWrite(RelevadorPin, LOW);
   }
 }
@@ -355,7 +355,7 @@ void loop() {
     int str_len = json.length() + 1;//Se calcula la longitud del string
     char char_array[str_len];//Se crea un arreglo de caracteres de dicha longitud
     json.toCharArray(char_array, str_len);//Se convierte el string a char array    
-    client.publish(mqttDHT, char_array); // Esta es la funcion que envia los datos por MQTT, especifica el tema y el valor
+    client.publish(mqttSCT, char_array); // Esta es la funcion que envia los datos por MQTT, especifica el tema y el valor
   }// fin del if (timeNow - timeLast > wait)
 }
 
