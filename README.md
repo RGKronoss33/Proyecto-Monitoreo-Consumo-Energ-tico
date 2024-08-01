@@ -9,6 +9,8 @@ Este proyecto utiliza una ESP32, una Raspberry Pi, entre otros componentes para 
 
 1. [Índice](#Índice)
 
+1. [Objetivos](#objetivos)
+
 1. [Materiales a utilizar](#Materiales)
 
 1. [Requisitos para empezar](#Requisitos)
@@ -28,6 +30,17 @@ Este proyecto utiliza una ESP32, una Raspberry Pi, entre otros componentes para 
 1. [Funcionamiento del proyecto](#Funcionamiento)
 
 1. [Código IoT](#IoT)
+
+<a id="objetivos"></a>
+## Objetivos
+
+* La problemática que resolverá será la incertidumbre de saber cuánta energía estamos consumiendo en ciertas áreas especificas en tiempo real. Esto tiene aplicaciones en la industria, oficinas, el hogar, etc.
+
+1. Saber cuánta energía es la que se esta consumiendo.
+
+1. Observar en que área especifica hay más consumo de energía que en otras.
+
+1. Identificar posibles desperdicios energéticos. 
 
 <a id="Materiales"></a>
 ## Materiales a utilizar                                    
