@@ -51,8 +51,8 @@ Este proyecto utiliza una ESP32, una Raspberry Pi, entre otros componentes para 
 <a id="Requisitos"></a>
 ## Requisitos para empezar
 
-*Saber la IP de nuestro Raspberry Pi en el formato 0.0.0.0
-
+* Saber la IP de nuestro Raspberry Pi en el formato *0.0.0.0*
+ 
 * Tener previamente instalado la **IDE de Arduino**, **Node-red** y **Mysql** (*mariadb-server*) en tu Raspberry Pi.
 
 * Se necesita de un usuario con todos los privilegios en **Mysql**.
@@ -690,7 +690,7 @@ Y con esto ya podremos importar el siguiente codigo de **Node-red** en formato *
         "type": "ui_switch",
         "z": "655c2b33c17c7d19",
         "name": "",
-        "label": "Control",
+        "label": "Dispositivo",
         "tooltip": "",
         "group": "6ef270b50846b685",
         "order": 0,
@@ -711,7 +711,7 @@ Y con esto ya podremos importar el siguiente codigo de **Node-red** en formato *
         "offcolor": "",
         "animate": false,
         "className": "",
-        "x": 580,
+        "x": 590,
         "y": 400,
         "wires": [
             [
@@ -967,14 +967,14 @@ Y con esto ya podremos importar el siguiente codigo de **Node-red** en formato *
                 "vt": "str"
             }
         ],
-        "repeat": "",
+        "repeat": "3600",
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 100,
+        "x": 110,
         "y": 540,
         "wires": [
             [
@@ -1049,7 +1049,7 @@ Y con esto ya podremos importar el siguiente codigo de **Node-red** en formato *
     {
         "id": "6ef270b50846b685",
         "type": "ui_group",
-        "name": "Control Relevador",
+        "name": "Control Prender/Apagar Dispositivo",
         "tab": "7d055cfb531cd518",
         "order": 4,
         "disp": true,
@@ -1077,6 +1077,9 @@ Y con esto ya podremos importar el siguiente codigo de **Node-red** en formato *
 Una vez importado el codigo a **Node-red**, accedemos a cada uno de los nodos **function** que llevan por nombre **MandaMensaje** 1, 2, ect. e ingresamos nuestro chatId en numero y el link del node-red ui en que que lo pide (solo en el 4 lo pide).
 
 Ahora pasamos al nodo **Telegram receiver** damos en el simbolo "+" y añadimos el nombre de nuestro bot el tipo "**_bot**" y el token. Despues ingresamos nuestro usuario en **Users** y nuestro chatId en **ChatIds**. Pasamos ahora al nodo **Telegram sender** y elegimos el nombre de nuestro bot donde nos aparece **none** en **Bot**.
+
+Despues configuramos uno nuestros nodos **mysql** dando en el simbolo de "+" y en **Host** agregamos *127.0.0.1*, en **port** ponemos *3306*, en **User** nuestro usuario de **mysql** que creamos en la **Raspberry Pi**, en **Password** ponemos la contraseña del usuario anterior y en **Database** insertamos el nombre de nuestra **DATABASE** la cual fue ***consumo***.
+Posteriormente nos dirijimos al otro nodo **mysql** y elegimos el nombre de nuestra **DATABASE** donde dice **none** en **Database**.
 
 <a id="Funcionamiento"></a>
 ## Funcionamiento del proyecto
