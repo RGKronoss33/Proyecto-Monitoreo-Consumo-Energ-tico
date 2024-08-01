@@ -48,6 +48,14 @@ Este proyecto utiliza una ESP32, una Raspberry Pi, entre otros componentes para 
 
 * Cables Jumper macho-hembra
 
+* 1 o 2 Protoboard
+
+* Relevador SRD-05VDC-SL-C
+
+* 1 Transistor 2N2222A
+
+* Un multi contacto
+
 <a id="Requisitos"></a>
 ## Requisitos para empezar
 
@@ -98,7 +106,19 @@ Y con esto tendremos nuestra base de datos ya creada.
 <a id="Circuito"></a>
 ## Circuito
 
-Circuito
+Debemos tener en cuenta lo siguiente a la hora de armar nuestro circuito.
+
+En el siguiente recuadro se muestra una tabla de que pines de la ESP32 van a que partes del circuito:
+
+```
+Pines ESP32----------Circuito
+3v3------------------pata libre de resistencia 2 470kΩ
+1GND-----------------negativo del capacitor
+2GND-----------------pin emisor del transistor
+3GND-----------------resistensia 330Ω
+```
+
+
 
 <a id="Codigo"></a>
 ## Código ESP32
