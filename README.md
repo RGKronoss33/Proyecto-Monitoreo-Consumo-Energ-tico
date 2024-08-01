@@ -401,7 +401,11 @@ Despues salimos del **BotFather** y ahora buscamos **IDBot**, dentro de el manda
 
 Primero que nada debemos de instalar lo siguiente. En **Node-red** nos dirijimos al menu de hamburgesa (tres lineas horizontales) y seleccionamos **Manage palette** en **install** y buscamos: **node-red-dashboard**, **node-red-node-mysql** y **node-red-contrib-telegrambot** y los instalamos.
 
-Y con esto ya podremos importar el siguiente codigo de **Node-red** en formato **JSON**. Para ello accedemos al menu de Hamburgesa, **import** y pegas el siguiente codigo:
+Y con esto ya podremos importar el siguiente codigo de **Node-red** en formato **JSON**. Para ello accedemos al menu de Hamburgesa, **import** y pegas el siguiente codigo. O de igual forma el archivo del codigo se encuentra al inicio guardado como **Json_Codigo_Nodered**.
+
+[Regresar al inicio](#Presentación)
+
+Este es el codigo en **JSON**:
 
 ```javascrip
 [
