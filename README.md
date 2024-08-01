@@ -134,8 +134,6 @@ pin COMUN del relevador----------parte 2 del cable dividido
 
 ```
 
-
-
 <a id="Codigo"></a>
 ## Código ESP32
 
@@ -730,8 +728,8 @@ Y con esto ya podremos importar el siguiente codigo de **Node-red** en formato *
         "tooltip": "",
         "group": "6ef270b50846b685",
         "order": 0,
-        "width": 0,
-        "height": 0,
+        "width": "0",
+        "height": "0",
         "passthru": true,
         "decouple": "false",
         "topic": "topic",
@@ -1085,7 +1083,7 @@ Y con esto ya podremos importar el siguiente codigo de **Node-red** en formato *
     {
         "id": "6ef270b50846b685",
         "type": "ui_group",
-        "name": "Control Prender/Apagar Dispositivo",
+        "name": "Control Prender/Apagar",
         "tab": "7d055cfb531cd518",
         "order": 4,
         "disp": true,
