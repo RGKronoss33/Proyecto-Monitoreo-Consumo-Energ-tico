@@ -49,6 +49,8 @@ Este proyecto utiliza una ESP32, una Raspberry Pi, entre otros componentes para 
 <a id="Requisitos"></a>
 ## Requisitos para empezar
 
+*Saber la IP de nuestro Raspberry Pi en el formato 0.0.0.0
+
 * Tener previamente instalado la **IDE de Arduino**, **Node-red** y **Mysql** (*mariadb-server*) en tu Raspberry Pi.
 
 * Se necesita de un usuario con todos los privilegios en **Mysql**.
@@ -93,7 +95,13 @@ Y con esto tendremos nuestra base de datos ya creada.
 Circuito
 
 <a id="Codigo"></a>
-## Codigo
+## Código ESP32
+
+Para que funcione el codigo primero debemos acceder al **IDE de ARDUINO** en **File** y luego **Preferences** y agregar el siguiente link y dar ok: https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
+
+Ahora pasamos a **Tools** y **Board:**, seleccionamos **ESP32 Arduino** y buscamos **ESP32 Dev Module**, dentro de **Tools** pasamos a **Port** para verificar que nuestra **ESP32** esta conectada y lista para recibir codigo de la **Raspberry Pi**.
+
+Despues nos vamos a **Tools** y **Manage Libraries** y buscamos **EmonLib** *by  OpenEnergyMonitor*, **PubSubClient** *by Nick O'Leary*, **Adafuit Unified Sensor** *by Adafruit* y losd instalamos. Una vez instalados podemos comenzar a cargar el siguiente codigo en nuestra ESP32.
 
 ```c++
 
@@ -1049,6 +1057,11 @@ Aqui viene la configuracion del **Node-red** en formato **JSON** para que dentro
     }
 ]
 ```
+
+<a id="ConfNode"></a>
+## Configuración del Node-red
+
+Una vez dentro de **Node-red** 
 
 <a id="Funcionamiento"></a>
 ## Funcionamiento del proyecto
